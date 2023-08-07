@@ -52,6 +52,28 @@ function Board({ xIsNext, squares, onPlay }) {
   );
 }
 
+function Switch(){
+
+  function switchClick(){
+    let dark = document.getElementsByClassName("dark-theme")[0];
+    let light = document.getElementsByClassName("light-theme")[0];
+
+
+    if (dark){
+      dark.className ="light-theme";
+      return;
+    } else if (light) {
+      light.className ="dark-theme";
+      return;
+    } else {
+      alert("Womp");
+      return;
+    }
+  }
+  
+  return <button className="switch" onClick={switchClick}>Toggle Theme</button>;
+}
+
 export default function Game() {
   const [history, setHistory] = useState([Array(9).fill(null)]);
   const [currentMove, setCurrentMove] = useState(0);
@@ -90,6 +112,7 @@ export default function Game() {
       <div className="game-info">
         <ol>{moves}</ol>
       </div>
+      <Switch/>
     </div>
   );
 }
